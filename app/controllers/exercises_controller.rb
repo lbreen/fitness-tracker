@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :find_exercise, only: [:show, :create, :update, :destroy]
+  before_action :find_exercise, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -9,17 +9,29 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    @exercise.save!
-    redirect_to dashboard_path
+    @exercise = Exercise.new(exercise_params)
+    @exercise.user = current_user
+    if @exercise.save!
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+    if @exercise.update(exercise_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @exercise.delete
+    redirect_to dashboard_path
   end
 
 
@@ -30,6 +42,6 @@ class ExercisesController < ApplicationController
   end
 
   def exercise_params
-    params.permit(:exercise).permit(:title, :description)
+    params.require(:exercise).permit(:title, :description)
   end
 end

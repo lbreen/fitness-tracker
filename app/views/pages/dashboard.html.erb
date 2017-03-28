@@ -8,3 +8,12 @@
     <%= link_to "Back", root_path, class: "btn btn-primary" %>
   </li>
 </ul>
+<br>
+<% @exercises.each do |exercise| %>
+  <ul class="list-inline" style="padding-left: 200px;">
+    <li><%= exercise.title %> - <%= exercise.description %></li>
+    <li><%= link_to "Edit", edit_exercise_path(exercise), class: "btn btn-primary" %></li>
+    <li><%= link_to "Delete", exercise_path(exercise), method: :delete %></li>
+  </ul>
+<% end %>
+

@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   def home
   end
   def dashboard
+    @exercises = Exercise.where(user_id: current_user.id)
   end
 end
