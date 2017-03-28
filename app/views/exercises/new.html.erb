@@ -1,0 +1,18 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="card">
+        <h1>Create a new exercise</h1>
+
+        <%= simple_form_for @exercise do |f| %>
+          <%= f.error_notification %>
+
+          <%= f.input :title %>
+          <%= f.input :description %>
+
+          <%= f.button :submit, class: "btn-primary btn-wide" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
