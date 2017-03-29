@@ -1,19 +1,38 @@
-<h1 style="text-align: center;">My dashboard</h1>
-
-<ul>
-  <li>
-    <%= link_to "Create new exercise", new_exercise_path, class: "btn btn-primary" %>
-  </li>
-  <li>
-    <%= link_to "Back", root_path, class: "btn btn-primary" %>
-  </li>
-</ul>
-<br>
-<% @exercises.each do |exercise| %>
-  <ul class="list-inline" style="padding-left: 200px;">
-    <li><%= exercise.title %> - <%= exercise.description %></li>
-    <li><%= link_to "Edit", edit_exercise_path(exercise), class: "btn btn-primary" %></li>
-    <li><%= link_to "Delete", exercise_path(exercise), method: :delete %></li>
-  </ul>
-<% end %>
-
+<div class="dashboard-container" style="margin-left: 0px; margin-right: 0px;">
+  <div class="column-25" style="border: 5px black solid">
+    <ul class="list-inline text-center">
+      <li>
+        <%= link_to "Create new exercise", new_exercise_path, class: "btn btn-primary" %>
+      </li>
+      <li>
+        <%= link_to "Back", root_path, class: "btn btn-primary" %>
+      </li>
+    </ul>
+    <% @exercises.each do |exercise| %>
+      <div class="exercise">
+        <div class="exercise-body">
+          <p><%= exercise.title %></p>
+        </div>
+        <div class="exercise-btns">
+          <ul class="list-inline">
+            <li><%= link_to "Edit", edit_exercise_path(exercise), class: "btn btn-primary" %></li>
+            <li><%= link_to "Delete", exercise_path(exercise), method: :delete %></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="column-75" style="border: 5px black solid">
+    <div class="primary-information card">
+      <h1>Graph - performance vs. time</h1>
+    </div>
+    <div class="secondary-information">
+      <div class="column-50 card" style="margin-right: 10px;">
+        <h2>Left table</h2>
+      </div>
+      <div class="column-50 card" style="margin-left: 10px;">
+        <h2>Right table</h2>
+      </div>
+    </div>
+  </div>
+</div>
