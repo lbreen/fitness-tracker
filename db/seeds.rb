@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Attempt.destroy_all
+Exercise.destroy_all
+
+exercise_titles = ["1.5 mile run", "3 mile run", "5 mile run", "8 mile tab"]
+attempt_comments = ["Feeling sluggish ", "Really good - fresh legs", "Absolutely knackered about halfway but pushed through"]
+
+exercise_titles.each do |title|
+  ex = Exercise.create!({
+    title: title,
+    user_id: User.first.id
+    })
+
+  5.times do
+    attempt = Attempt.new({
+      date: Date.today,
+      time_taken: 500.0,
+      comments: attempt_comments.sample
+      })
+
+    attempt.exercise = ex
+    attempt.save!
+  end
+end
