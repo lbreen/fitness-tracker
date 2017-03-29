@@ -1,0 +1,22 @@
+.exercise {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px $gray-lighter solid;
+  background-color: white;
+}
+
+.exercise-body {
+  flex: 0 1 auto;
+  p {
+    text-align: center;
+  }
+}
+
+.exercise-btns {
+  flex: 0 1 auto;
+}
+
+.active {
+  background-color: $gray-lighter;
+}
