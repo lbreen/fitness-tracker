@@ -1,3 +1,5 @@
+require 'faker'
+
 Attempt.destroy_all
 Exercise.destroy_all
 
@@ -12,8 +14,8 @@ exercise_titles.each do |title|
 
   5.times do
     attempt = Attempt.new({
-      date: Date.today,
-      time_taken: 500.0,
+      date: Faker::Date.backward(7),
+      time_taken: rand(400.0...600.0),
       comments: attempt_comments.sample
       })
 

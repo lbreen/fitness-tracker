@@ -5,6 +5,9 @@ class PagesController < ApplicationController
   end
   def dashboard
     @exercises = Exercise.where(user_id: current_user.id)
-    @data = [Attempt.first.date, Attempt.first.time_taken]
+
+    exercise = @exercises.first
+
+    @data = exercise.attempts.map { |attempt| [attempt.date, attempt.time_taken]}
   end
 end

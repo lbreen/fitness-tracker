@@ -30,4 +30,5 @@ end
 
 gem 'chartkick'
 gem 'groupdate'
+gem 'faker'
 
