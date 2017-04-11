@@ -8,6 +8,6 @@ class PagesController < ApplicationController
 
     exercise = @exercises.first
 
-    @data = exercise.attempts.map { |attempt| [attempt.date, attempt.time_taken]}
+    @data = exercise.attempts.map { |attempt| [attempt.date, Time.at(attempt.time_taken).strftime("%H:%M:%S")]}
   end
 end
