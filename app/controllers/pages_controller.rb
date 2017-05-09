@@ -3,11 +3,11 @@ class PagesController < ApplicationController
 
   def home
   end
+
   def dashboard
-    @exercises = Exercise.where(user_id: current_user.id)
+    #@exercises = Exercise.where(user_id: current_user.id)
 
-    exercise = @exercises.first
 
-    @data = exercise.attempts.map { |attempt| [attempt.date, Time.at(attempt.time_taken).strftime("%H:%M:%S")]}
+    # @data = exercise.attempts.map { |attempt| [attempt.date, Time.at(attempt.time_taken).strftime("%H:%M:%S")]}
   end
 end

@@ -2,6 +2,9 @@ class ExercisesController < ApplicationController
   before_action :find_exercise, only: [:show, :edit, :update, :destroy]
 
   def show
+    @exercises = Exercise.where(user_id: current_user.id)
+
+    @attempts = @exercise.attempts.sort { |x, y| x.date <=> y.date }
   end
 
   def new
