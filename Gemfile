@@ -28,4 +28,8 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'chartkick'
+gem 'highcharts-rails', '~> 5.0', '>= 5.0.7'
+gem 'groupdate'
+gem 'faker'
 

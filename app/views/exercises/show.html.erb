@@ -11,7 +11,7 @@
     <% @exercises.each do |exercise| %>
       <div class="exercise">
         <div class="exercise-body">
-          <p><%= exercise.title %></p>
+          <%= link_to exercise.title, exercise_path(exercise) %>
         </div>
         <div class="exercise-btns">
           <ul class="list-inline">
@@ -24,7 +24,7 @@
   </div>
   <div class="column-75" style="border: 5px black solid">
     <div class="primary-information card">
-      <div id="chart"><%= line_chart @data, xtitle: "Date", ytitle: "Time taken" %></div>
+      <%= render 'exercise_results', attempts: @attempts %>
     </div>
     <div class="secondary-information">
       <div class="column-50 card" style="margin-right: 10px;">
@@ -37,20 +37,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("#chart").on("chartkick:before", function (e) {
-        yAxis: {
-          labels: {
-            formatter: function () {
-              return this.value+'%';
-            }
-          }
-        }
-      });
-    })
-  </script>
-
-<% end %>
