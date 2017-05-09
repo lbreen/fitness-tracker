@@ -4,9 +4,6 @@
       <li>
         <%= link_to "Create new exercise", new_exercise_path, class: "btn btn-primary" %>
       </li>
-      <li>
-        <%= link_to "Back", root_path, class: "btn btn-primary" %>
-      </li>
     </ul>
     <% @exercises.each do |exercise| %>
       <div class="exercise">
@@ -14,10 +11,12 @@
           <%= link_to exercise.title, exercise_path(exercise) %>
         </div>
         <div class="exercise-btns">
-          <ul class="list-inline">
-            <li><%= link_to "Edit", edit_exercise_path(exercise), class: "btn btn-primary" %></li>
-            <li><%= link_to "Delete", exercise_path(exercise), method: :delete %></li>
-          </ul>
+          <%= link_to(edit_exercise_path(exercise)) do %>
+            <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+          <%= link_to(exercise_path(exercise), method: :delete) do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
         </div>
       </div>
     <% end %>

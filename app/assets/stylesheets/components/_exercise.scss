@@ -8,13 +8,22 @@
 
 .exercise-body {
   flex: 0 1 auto;
-  p {
+  a > p {
     text-align: center;
   }
 }
 
 .exercise-btns {
   flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 0px;
+  width: 15%;
+  a {
+    flex: 0 0 auto;
+    text-decoration: none;
+  }
 }
 
 .active {
