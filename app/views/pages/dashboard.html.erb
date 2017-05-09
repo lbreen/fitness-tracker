@@ -24,11 +24,12 @@
   </div>
   <div class="column-75" style="border: 5px black solid">
     <div class="primary-information card">
-      <div id="chart"><%= line_chart @data %></div>
+      <div id="chart"><%= line_chart @data, xtitle: "Date", ytitle: "Time taken" %></div>
     </div>
     <div class="secondary-information">
       <div class="column-50 card" style="margin-right: 10px;">
         <h2>Left table</h2>
+        <h4>(Progress to a goal)</h4>
       </div>
       <div class="column-50 card" style="margin-left: 10px;">
         <h2>Right table</h2>
@@ -36,3 +37,20 @@
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#chart").on("chartkick:before", function (e) {
+        yAxis: {
+          labels: {
+            formatter: function () {
+              return this.value+'%';
+            }
+          }
+        }
+      });
+    })
+  </script>
+
+<% end %>
