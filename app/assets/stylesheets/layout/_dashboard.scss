@@ -7,7 +7,7 @@
 
 .column-25 {
   width: 25%;
-  flex: 1 0 auto;
+  flex: 0 1 auto;
 }
 
 .column-50 {
@@ -32,4 +32,9 @@
   div {
     flex: 1 0 auto;
   }
+}
+
+#exercise-list {
+  border-right: 1px $gray-light solid;
+  padding: 10px;
 }
