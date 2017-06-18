@@ -9,11 +9,13 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
+    authorize @exercise
   end
 
   def create
     @exercise = Exercise.new(exercise_params)
     @exercise.user = current_user
+    authorize @exercise
     if @exercise.save!
       redirect_to dashboard_path
     else
@@ -33,7 +35,7 @@ class ExercisesController < ApplicationController
   end
 
   def destroy
-    @exercise.delete
+    @exercise.destroy
     redirect_to dashboard_path
   end
 
@@ -42,6 +44,7 @@ class ExercisesController < ApplicationController
 
   def find_exercise
     @exercise = Exercise.find(params[:id])
+    authorize @exercise
   end
 
   def exercise_params
