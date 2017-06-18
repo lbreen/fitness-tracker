@@ -6,12 +6,12 @@
       </li>
     </ul>
     <% @exercises.each do |exercise| %>
-      <div class="exercise">
-        <%= link_to(exercise_path(exercise)) do %>
+      <div class="exercise" id="<%= exercise.id %>-exercise">
+        <%# link_to(exercise_path(exercise)) do %>
           <div class="exercise-body">
             <p><%= exercise.title %></p>
           </div>
-        <% end %>
+        <%# end %>
         <div class="exercise-btns">
           <%= link_to(edit_exercise_path(exercise)) do %>
             <i class="fa fa-pencil-square-o"></i>
@@ -24,10 +24,10 @@
     <% end %>
   </div>
   <div class="column-75">
-    <div class="primary-information card">
+    <div class="card" id="primary-information">
       <%= render 'exercise_results', attempts: @attempts %>
     </div>
-    <div class="secondary-information">
+    <div id="secondary-information">
       <div class="column-50 card" style="margin-right: 10px;">
         <h2>Left table</h2>
         <h4>(Progress to a goal)</h4>
@@ -38,3 +38,18 @@
     </div>
   </div>
 </div>
+
+<%content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      $(".exercise").click(function(event) {
+
+      });
+    });
+
+    // $.get("https://api.github.com/users/lewagon/repos", function(data) {
+    //   // success callback;
+    //   console.log(data);
+    // })
+  </script>
+<% end %>
