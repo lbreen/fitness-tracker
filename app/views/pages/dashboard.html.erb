@@ -7,11 +7,11 @@
     </ul>
     <% @exercises.each do |exercise| %>
       <div class="exercise" id="<%= exercise.id %>">
-        <%# link_to(exercise_path(exercise)) do %>
+        <%= link_to(exercise_path(exercise), id: exercise.id, class: "exercise-links") do %>
           <div class="exercise-body">
             <p><%= exercise.title %></p>
           </div>
-        <%# end %>
+        <% end %>
         <div class="exercise-btns">
           <%= link_to(edit_exercise_path(exercise)) do %>
             <i class="fa fa-pencil-square-o"></i>
@@ -43,8 +43,9 @@
 <%content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
-      $(".exercise").click(function(event) {
-        url = "http://localhost:3000/exercises/" + event.target.id;
+      $(".exercise-links").click(function(event) {
+        event.preventDefault();
+        url = event.currentTarget.href;
 
         $.get(url, function(data) {
           // success callback;

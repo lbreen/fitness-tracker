@@ -4,17 +4,21 @@
   align-items: center;
   border: 1px $gray-lighter solid;
   background-color: white;
-  &:hover {
-    opacity: 0.4;
-    cursor: pointer;
-  }
   a {
   flex: 1 auto;
+  color: #333333;
+    &:visited {
+      text-decoration: none;
+    }
   }
 }
 
 .exercise-body {
   padding-left: 10px;
+  &:hover {
+    opacity: 0.4;
+    cursor: pointer;
+  }
 }
 
 .exercise-btns {
@@ -27,6 +31,10 @@
   a {
     flex: 0 0 auto;
     text-decoration: none;
+    i:hover {
+      opacity: 0.4;
+      cursor: pointer;
+    }
   }
 }
 
