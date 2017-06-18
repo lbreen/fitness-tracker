@@ -2,14 +2,16 @@
   <div class="column-25" id="exercise-list">
     <ul class="list-inline text-center">
       <li>
-        <%= link_to "Create new exercise", new_exercise_path, class: "btn btn-primary" %>
+        <%= link_to "Add new exercise", new_exercise_path, class: "btn btn-primary" %>
       </li>
     </ul>
     <% @exercises.each do |exercise| %>
       <div class="exercise">
-        <div class="exercise-body">
-          <%= link_to exercise.title, exercise_path(exercise) %>
-        </div>
+        <%= link_to(exercise_path(exercise)) do %>
+          <div class="exercise-body">
+            <p><%= exercise.title %></p>
+          </div>
+        <% end %>
         <div class="exercise-btns">
           <%= link_to(edit_exercise_path(exercise)) do %>
             <i class="fa fa-pencil-square-o"></i>

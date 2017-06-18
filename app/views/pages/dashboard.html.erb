@@ -1,30 +1,31 @@
 <div class="dashboard-container" style="margin-left: 0px; margin-right: 0px;">
-  <div class="column-25" style="border: 5px black solid">
+  <div class="column-25" id="exercise-list">
     <ul class="list-inline text-center">
       <li>
-        <%= link_to "Create new exercise", new_exercise_path, class: "btn btn-primary" %>
-      </li>
-      <li>
-        <%= link_to "Back", root_path, class: "btn btn-primary" %>
+        <%= link_to "Add new exercise", new_exercise_path, class: "btn btn-primary" %>
       </li>
     </ul>
     <% @exercises.each do |exercise| %>
       <div class="exercise">
-        <div class="exercise-body">
-          <p><%= exercise.title %></p>
-        </div>
+        <%= link_to(exercise_path(exercise)) do %>
+          <div class="exercise-body">
+            <p><%= exercise.title %></p>
+          </div>
+        <% end %>
         <div class="exercise-btns">
-          <ul class="list-inline">
-            <li><%= link_to "Edit", edit_exercise_path(exercise), class: "btn btn-primary" %></li>
-            <li><%= link_to "Delete", exercise_path(exercise), method: :delete %></li>
-          </ul>
+          <%= link_to(edit_exercise_path(exercise)) do %>
+            <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+          <%= link_to(exercise_path(exercise), method: :delete) do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
-  <div class="column-75" style="border: 5px black solid">
+  <div class="column-75">
     <div class="primary-information card">
-      <div id="chart"><%= line_chart @data, xtitle: "Date", ytitle: "Time taken" %></div>
+      <%= render 'exercise_results', attempts: @attempts %>
     </div>
     <div class="secondary-information">
       <div class="column-50 card" style="margin-right: 10px;">
@@ -37,20 +38,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("#chart").on("chartkick:before", function (e) {
-        yAxis: {
-          labels: {
-            formatter: function () {
-              return this.value+'%';
-            }
-          }
-        }
-      });
-    })
-  </script>
-
-<% end %>
