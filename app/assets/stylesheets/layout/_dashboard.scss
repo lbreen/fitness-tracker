@@ -7,7 +7,7 @@
 
 .column-25 {
   width: 25%;
-  flex: 1 0 auto;
+  flex: 0 1 auto;
 }
 
 .column-50 {
@@ -20,16 +20,21 @@
   flex: 1 0 auto;
 }
 
-.primary-information {
+#primary-information {
   min-height: 300px;
   margin: 20px;
 }
 
-.secondary-information {
+#secondary-information {
   margin: 20px;
   display: flex;
   justify-content: space-between;
   div {
     flex: 1 0 auto;
   }
+}
+
+#exercise-list {
+  border-right: 1px $gray-light solid;
+  padding-top: 10px;
 }

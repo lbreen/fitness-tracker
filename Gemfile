@@ -32,4 +32,5 @@ gem 'chartkick'
 gem 'highcharts-rails', '~> 5.0', '>= 5.0.7'
 gem 'groupdate'
 gem 'faker'
+gem 'serviceworker-rails'
 

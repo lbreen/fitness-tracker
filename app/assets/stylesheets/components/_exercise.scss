@@ -4,17 +4,30 @@
   align-items: center;
   border: 1px $gray-lighter solid;
   background-color: white;
+  &:hover {
+    opacity: 0.4;
+    cursor: pointer;
+  }
+  a {
+  flex: 1 auto;
+  }
 }
 
 .exercise-body {
-  flex: 0 1 auto;
-  p {
-    text-align: center;
-  }
+  padding-left: 10px;
 }
 
 .exercise-btns {
   flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 0px;
+  width: 15%;
+  a {
+    flex: 0 0 auto;
+    text-decoration: none;
+  }
 }
 
 .active {
