@@ -1,0 +1,18 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="card">
+        <h1>Add a new attempt</h1>
+        <%= simple_form_for([@exercise, @attempt], remote: true) do |f| %>
+          <%= f.error_notification %>
+
+          <%= f.input :date %>
+          <%= f.input :time_taken %>
+          <%= f.input :comments %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

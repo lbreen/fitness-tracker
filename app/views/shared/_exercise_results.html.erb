@@ -4,4 +4,6 @@
     <li>Time: <%= attempt.time_taken_in_minutes %></li>
     <br>
   <% end %>
+
+  <%= link_to "New attempt", new_exercise_attempt_path(exercise), class: "btn btn-primary" %>
 </ul>
