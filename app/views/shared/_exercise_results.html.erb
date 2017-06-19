@@ -1,9 +1,12 @@
-<ul>
-  <% attempts.each do |attempt| %>
+<% attempts.each do |attempt| %>
+  <ul class="list-inline attempt" data-attempt-id="<%= attempt.id %>">
     <li>Date: <%= l(attempt.date, format: :short ) %></li>
     <li>Time: <%= attempt.time_taken_in_minutes %></li>
-    <br>
-  <% end %>
+    <%= link_to "Delete", exercise_attempt_path(exercise_id: exercise.id, id: attempt.id), method: :delete, remote: true, class: "btn btn-danger" %>
+  </ul>
+<% end %>
 
-  <%= link_to "New attempt", new_exercise_attempt_path(exercise), class: "btn btn-primary" %>
-</ul>
+  <!-- Button trigger new attempts modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newAttemptModal">
+    New attempt
+  </button>

@@ -1,5 +1,5 @@
 class AttemptsController < ApplicationController
-  #before_action :find_attempt, only: [:show]
+  before_action :find_attempt, only: [:destroy]
 
   def new
     @attempt = Attempt.new
@@ -24,10 +24,15 @@ class AttemptsController < ApplicationController
     end
   end
 
+  def destroy
+    @attempt.destroy
+  end
+
   private
 
   def find_attempt
     @attempt = Attempt.find(params[:id])
+    authorize @attempt
   end
 
   def attempt_params
