@@ -26,7 +26,7 @@
   <div class="column-75" id="exercise-information">
     <div class="card" id="primary-information">
       <div class="text-center"><p><%= @exercise.title %></p></div>
-      <%= render 'shared/exercise_results', exercise: @exercise, attempts: attempts %>
+      <%= render 'shared/exercise_results', exercise: @exercise, attempts: attempts, attempt: attempt %>
     </div>
     <div id="secondary-information">
       <div class="column-50 card" style="margin-right: 10px;">

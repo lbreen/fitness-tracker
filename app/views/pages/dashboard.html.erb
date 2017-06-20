@@ -1,4 +1,4 @@
-<%= render 'shared/exercise_show', exercises: @exercises, attempts: @attempts %>
+<%= render 'shared/exercise_show', exercises: @exercises, attempts: @attempts, attempt: @attempt %>
 
 <%content_for(:after_js) do %>
   <script>
@@ -11,10 +11,8 @@
           // success callback;
           el = $("<div></div>");
           el.html(data);
-          newResults = $("#exercise-information", el).html()
-          $('#exercise-information').html(newResults);
-          //
-          // $('#exercise-information').html(data);
+          new_results = $("#exercise-information", el).html()
+          $('#exercise-information').html(new_results);
         })
       });
     });

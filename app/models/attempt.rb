@@ -1,5 +1,7 @@
 class Attempt < ApplicationRecord
   belongs_to :exercise
+  validates :time_taken, presence: true # greater than 0
+  validates :date, presence: true
 
   def user
     self.exercise.user

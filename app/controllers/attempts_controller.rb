@@ -1,17 +1,18 @@
 class AttemptsController < ApplicationController
   before_action :find_attempt, only: [:destroy]
+  before_action :find_exercise, only: [:new, :create]
 
   def new
     @attempt = Attempt.new
-    @exercise = Exercise.find(params[:exercise_id])
     authorize @attempt
   end
 
   def create
     @attempt = Attempt.new(attempt_params)
-    @attempt.exercise = Exercise.find(params[:exercise_id])
+    @attempt.exercise = @exercise
     authorize @attempt
     if @attempt.save
+      @attempts = @exercise.attempts
       respond_to do |format|
         format.html { redirect_to dashboard_path }
         format.js  # <-- will render `app/views/attempts/create.js.erb`
@@ -33,6 +34,10 @@ class AttemptsController < ApplicationController
   def find_attempt
     @attempt = Attempt.find(params[:id])
     authorize @attempt
+  end
+
+  def find_exercise
+    @exercise = Exercise.find(params[:exercise_id])
   end
 
   def attempt_params

@@ -5,6 +5,7 @@ class ExercisesController < ApplicationController
     @exercises = Exercise.where(user_id: current_user.id)
 
     @attempts = @exercise.attempts.sort { |x, y| x.date <=> y.date }
+    @attempt = Attempt.new # Create a new attempt from the new_attempt_modal
   end
 
   def new
