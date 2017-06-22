@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([exercise, attempt], remote: true) do |f| %>
+        <%= simple_form_for([exercise, attempt], remote: true, id: "new_attempt_form") do |f| %>
           <%= f.error_notification %>
 
           <%= f.input :date %>
@@ -19,10 +19,21 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.button :submit, "Save new attempt", class: "btn btn-primary" %>
+        <%= f.button :submit, "Save new attempt", class: "btn btn-primary", id: "new_attempt_form_submit" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      $('#new_attempt_form_submit').click(function(event) {
+        event.preventDefault();
+        // Form validation
+      })
+    });
+  </script>
+<% end %>
 

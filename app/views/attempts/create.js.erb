@@ -1,5 +1,5 @@
 <% if @attempt.errors.any? %>
-  console.log("Bollocks");
+  console.log('<%= @attempt.errors %>');
 <% else %>
   $('#newAttemptModal').modal('hide');
   var attempt_list = $("<%= j render 'shared/exercise_results', exercise: @exercise, attempts: @attempts, attempt: @attempt %>").hide();
