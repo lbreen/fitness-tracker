@@ -1,0 +1,411 @@
+//colors
+$black: black;
+$blue: #0000ff;
+$color_jade_approx: #05b378;
+$color_valencia_approx: #db4437;
+$color_my_sin_approx: #f8b128;
+$color_chicago_approx: #5c5c5c;
+$color_perano_approx: #b6b6fc;
+$color_portage_approx: #9e9efc;
+$color_nobel_approx: #b3b2b2;
+$color_celeste_approx: #ccc;
+$color_shady_lady_approx:  darkgray;
+$red: red;
+$color_royal_blue_approx: #4040e8;
+$periwinkle: #ccccff;
+
+//fonts
+$font_0: FontAwesome;
+
+//@extend-elements
+//original selectors
+//.mg-histogram .axis path, .mg-histogram .axis line
+%extend_1 {
+  fill: none;
+  opacity: 0.7;
+  shape-rendering: auto;
+  stroke: $color_celeste_approx;
+}
+
+//original selectors
+//.mg-x-axis line, .mg-y-axis line
+%extend_2 {
+  opacity: 1;
+  shape-rendering: auto;
+  stroke: $color_nobel_approx;
+  stroke-width: 1px;
+}
+
+//original selectors
+//.mg-x-axis text, .mg-y-axis text, .mg-histogram .axis text
+%extend_3 {
+  fill: $black;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+//original selectors
+//.mg-x-axis .label, .mg-y-axis .label, .mg-axis .label
+%extend_4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+
+.mg-active-datapoint {
+  fill: $black;
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+.mg-area1-color {
+  fill: $blue;
+}
+.mg-area2-color {
+  fill: $color_jade_approx;
+}
+.mg-area3-color {
+  fill: $color_valencia_approx;
+}
+.mg-area4-color {
+  fill: $color_my_sin_approx;
+}
+.mg-area5-color {
+  fill: $color_chicago_approx;
+}
+.mg-barplot {
+  .mg-bar-prediction {
+    fill: $color_chicago_approx;
+  }
+  .mg-bar-baseline {
+    stroke: $color_chicago_approx;
+    stroke-width: 2;
+  }
+  rect.mg-bar {
+    shape-rendering: auto;
+    &.default-bar {
+      fill: $color_perano_approx;
+    }
+    &.default-active {
+      fill: $color_portage_approx;
+    }
+  }
+}
+.mg-bar-target-element {
+  font-size: 11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: 300;
+}
+.mg-baselines {
+  line {
+    opacity: 1;
+    shape-rendering: auto;
+    stroke: $color_nobel_approx;
+    stroke-width: 1px;
+  }
+  text {
+    fill: $black;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    stroke: none;
+  }
+}
+.mg-header {
+  cursor: default;
+  font-size: 1.2rem;
+  .mg-chart-description {
+    fill: $color_celeste_approx;
+    font-family: $font_0;
+    font-size: 1.2rem;
+  }
+  .mg-warning {
+    fill: $color_celeste_approx;
+    font-family: $font_0;
+    font-size: 1.2rem;
+  }
+}
+.mg-popover {
+  font-size: 0.95rem;
+}
+.mg-popover-content {
+  cursor: auto;
+  line-height: 17px;
+}
+.mg-data-table {
+  margin-top: 30px;
+  .secondary-title {
+    color: $color_shady_lady_approx;
+  }
+  thead tr th {
+    border-bottom: 1px solid $color_shady_lady_approx;
+    cursor: default;
+    font-size: 1.1rem;
+    font-weight: normal;
+    padding: 5px 5px 8px 5px;
+    text-align: right;
+    .fa {
+      color: $color_celeste_approx;
+      padding-left: 4px;
+    }
+    .popover {
+      font-size: 1rem;
+      font-weight: normal;
+    }
+  }
+  tbody tr td {
+    margin: 2px;
+    padding: 5px;
+    vertical-align: top;
+    &.table-text {
+      opacity: 0.8;
+      padding-left: 30px;
+    }
+  }
+}
+.mg-y-axis {
+  line {
+    @extend %extend_2;
+    &.mg-extended-yax-ticks {
+      opacity: 0.4;
+    }
+  }
+  text {
+    @extend %extend_3;
+  }
+  .label {
+    @extend %extend_4;
+  }
+}
+.mg-x-axis {
+  line {
+    @extend %extend_2;
+    &.mg-extended-xax-ticks {
+      opacity: 0.4;
+    }
+  }
+  text {
+    @extend %extend_3;
+  }
+  .label {
+    @extend %extend_4;
+  }
+}
+.mg-histogram {
+  .axis {
+    path {
+      @extend %extend_1;
+    }
+    line {
+      @extend %extend_1;
+    }
+    text {
+      @extend %extend_3;
+    }
+  }
+  .mg-bar rect {
+    fill: $color_perano_approx;
+    shape-rendering: auto;
+    &.active {
+      fill: $color_portage_approx;
+    }
+  }
+}
+tspan {
+  &.hist-symbol {
+    fill: $color_portage_approx;
+  }
+  &.mg-points-mono {
+    fill: $blue;
+    stroke: $blue;
+  }
+}
+.mg-least-squares-line {
+  stroke: $red;
+  stroke-width: 1px;
+}
+.mg-lowess-line {
+  fill: none;
+  stroke: $red;
+}
+.mg-line1-color {
+  stroke: $color_royal_blue_approx;
+}
+.mg-hover-line1-color {
+  fill: $color_royal_blue_approx;
+}
+.mg-line2-color {
+  stroke: $color_jade_approx;
+}
+.mg-hover-line2-color {
+  fill: $color_jade_approx;
+}
+.mg-line3-color {
+  stroke: $color_valencia_approx;
+}
+.mg-hover-line3-color {
+  fill: $color_valencia_approx;
+}
+.mg-line4-color {
+  stroke: $color_my_sin_approx;
+}
+.mg-hover-line4-color {
+  fill: $color_my_sin_approx;
+}
+.mg-line5-color {
+  stroke: $color_chicago_approx;
+}
+.mg-hover-line5-color {
+  fill: $color_chicago_approx;
+}
+.mg-line1-legend-color {
+  color: $color_royal_blue_approx;
+  fill: $color_royal_blue_approx;
+}
+.mg-line2-legend-color {
+  color: $color_jade_approx;
+  fill: $color_jade_approx;
+}
+.mg-line3-legend-color {
+  color: $color_valencia_approx;
+  fill: $color_valencia_approx;
+}
+.mg-line4-legend-color {
+  color: $color_my_sin_approx;
+  fill: $color_my_sin_approx;
+}
+.mg-line5-legend-color {
+  color: $color_chicago_approx;
+  fill: $color_chicago_approx;
+}
+.mg-markers {
+  line {
+    opacity: 1;
+    shape-rendering: auto;
+    stroke: $color_nobel_approx;
+    stroke-width: 1px;
+  }
+  text {
+    fill: $black;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+}
+.mg-missing-text {
+  opacity: 0.9;
+}
+.mg-missing-background {
+  stroke: $blue;
+  fill: none;
+  stroke-dasharray: 10,5;
+  stroke-opacity: 0.05;
+  stroke-width: 2;
+}
+.mg-missing {
+  .mg-main-line {
+    opacity: 0.1;
+  }
+  .mg-main-area {
+    opacity: 0.03;
+  }
+}
+path {
+  &.mg-main-area {
+    opacity: 0.2;
+    stroke: none;
+  }
+  &.mg-confidence-band {
+    fill: $color_celeste_approx;
+    opacity: 0.4;
+    stroke: none;
+  }
+  &.mg-main-line {
+    fill: none;
+    opacity: 0.8;
+    stroke-width: 1.1px;
+  }
+}
+.mg-x-rug-mono {
+  stroke: $black;
+}
+.mg-y-rug-mono {
+  stroke: $black;
+}
+.mg-x-axis-small {
+  text {
+    font-size: 0.6rem;
+  }
+  .label {
+    font-size: 0.65rem;
+  }
+}
+.mg-y-axis-small {
+  text {
+    font-size: 0.6rem;
+  }
+  .label {
+    font-size: 0.65rem;
+  }
+}
+.mg-active-datapoint-small {
+  font-size: 0.6rem;
+}
+.mg-european-hours {
+}
+.mg-year-marker {
+  text {
+    fill: $black;
+    font-size: 0.7rem;
+    opacity: 0.6;
+  }
+  line {
+    opacity: 1;
+    shape-rendering: auto;
+    stroke: $color_nobel_approx;
+    stroke-width: 1px;
+  }
+}
+text.mg-barplot-group-label {
+  font-weight: 900;
+}
+.mg-baselines-small text {
+  font-size: 0.6rem;
+}
+.mg-category-guides line {
+  stroke: $color_nobel_approx;
+}
+.mg-points circle {
+  opacity: 0.65;
+  fill-opacity: 0.4;
+  stroke-opacity: 1;
+  &.selected {
+    fill-opacity: 1;
+    stroke-opacity: 1;
+  }
+}
+.mg-line-legend text {
+  font-size: 0.9rem;
+  font-weight: 300;
+  stroke: none;
+}
+.mg-main-area-solid svg .mg-main-area {
+  fill: $periwinkle;
+  opacity: 1;
+}
+circle.mg-points-mono {
+  fill: $blue;
+  stroke: $blue;
+}
+.mg-voronoi path {
+  fill: none;
+  pointer-events: all;
+  stroke: none;
+  stroke-opacity: 0.1;
+}
+.mg-axis .label {
+  @extend %extend_4;
+}
+.mg-year-marker-small text {
+  font-size: 0.6rem;
+}
