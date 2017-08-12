@@ -1,55 +1,23 @@
-<div class="dashboard-container" style="margin-left: 0px; margin-right: 0px;">
-  <div class="column-25" id="exercise-list">
-    <ul class="list-inline text-center">
-      <li>
-        <%= link_to "Add new exercise", new_exercise_path, class: "btn btn-primary" %>
-      </li>
-    </ul>
-    <% @exercises.each do |exercise| %>
-      <div class="exercise" id="<%= exercise.id %>-exercise">
-        <%# link_to(exercise_path(exercise)) do %>
-          <div class="exercise-body">
-            <p><%= exercise.title %></p>
-          </div>
-        <%# end %>
-        <div class="exercise-btns">
-          <%= link_to(edit_exercise_path(exercise)) do %>
-            <i class="fa fa-pencil-square-o"></i>
-          <% end %>
-          <%= link_to(exercise_path(exercise), method: :delete) do %>
-            <i class="fa fa-trash-o"></i>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="column-75">
-    <div class="card" id="primary-information">
-      <%= render 'exercise_results', attempts: @attempts %>
-    </div>
-    <div id="secondary-information">
-      <div class="column-50 card" style="margin-right: 10px;">
-        <h2>Left table</h2>
-        <h4>(Progress to a goal)</h4>
-      </div>
-      <div class="column-50 card" style="margin-left: 10px;">
-        <h2>Right table</h2>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/exercise_show', exercises: @exercises, attempts: @attempts %>
 
 <%content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
-      $(".exercise").click(function(event) {
+      $(".exercise-links").click(function(event) {
+        event.preventDefault();
+        url = event.currentTarget.href;
 
+        $.get(url, function(data) {
+          // success callback;
+          el = $("<div></div>");
+          el.html(data);
+          newResults = $("#exercise-information", el).html()
+          $('#exercise-information').html(newResults);
+          //
+          // $('#exercise-information').html(data);
+        })
       });
     });
 
-    // $.get("https://api.github.com/users/lewagon/repos", function(data) {
-    //   // success callback;
-    //   console.log(data);
-    // })
   </script>
 <% end %>
