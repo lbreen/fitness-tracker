@@ -1,6 +1,11 @@
-<ul>
-  <% attempts.each do |attempt| %>
-    <li>Date: <%= l(attempt.date, format: :short ) %></li>
-    <li>Time: <%= attempt.time_taken_in_minutes %></li>
-  <% end %>
-</ul>
+<% if attempts.empty? %>
+  <p>You haven't recorded any times yet!</p>
+
+<% else %>
+  <ul>
+    <% attempts.each do |attempt| %>
+      <li>Date: <%= l(attempt.date, format: :short ) %></li>
+      <li>Time: <%= attempt.time_taken_in_minutes %></li>
+    <% end %>
+  </ul>
+<% end %>
