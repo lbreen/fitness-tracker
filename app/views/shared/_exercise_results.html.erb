@@ -1,10 +1,15 @@
 <div id="attempts-list">
-  <% attempts.each do |attempt| %>
-    <ul class="list-inline attempt" data-attempt-id="<%= attempt.id %>">
-      <li>Date: <%= l(attempt.date, format: :short ) %></li>
-      <li>Time: <%= attempt.time_taken_in_minutes %></li>
-      <%= link_to "Delete", exercise_attempt_path(exercise_id: exercise.id, id: attempt.id), method: :delete, remote: true, class: "btn btn-danger" %>
-    </ul>
+  <% if attempts.empty? %>
+    <p>You haven't recorded any times yet!</p>
+
+  <% else %>
+    <% attempts.each do |attempt| %>
+      <ul class="list-inline attempt" data-attempt-id="<%= attempt.id %>">
+        <li>Date: <%= l(attempt.date, format: :short ) %></li>
+        <li>Time: <%= attempt.time_taken_in_minutes %></li>
+        <%= link_to "Delete", exercise_attempt_path(exercise_id: exercise.id, id: attempt.id), method: :delete, remote: true, class: "btn btn-danger" %>
+      </ul>
+    <% end %>
   <% end %>
 </div>
 
