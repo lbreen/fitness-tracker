@@ -1,9 +1,0 @@
-<% if @attempt.errors.any? %>
-  console.log('<%= @attempt.errors %>');
-<% else %>
-  $('#newAttemptModal').modal('hide');
-  var attempt_list = $("<%= j render 'shared/exercise_results', exercise: @exercise, attempts: @attempts, attempt: @attempt %>").hide();
-  var list_item = attempt_list[0].lastElementChild;
-  $("#attempts-list").append(list_item);
-  list_item.slideDown();
-<% end %>

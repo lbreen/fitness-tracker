@@ -1,4 +1,4 @@
-class AttemptPolicy < ApplicationPolicy
+class ActivityPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope

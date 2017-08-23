@@ -12,7 +12,7 @@
             <p><%= exercise.title %></p>
           </div>
         <% end %>
-        <div class="exercise-btns">
+        <div class="exercise-btns hidden-xs">
           <%= link_to(edit_exercise_path(exercise)) do %>
             <i class="fa fa-pencil-square-o"></i>
           <% end %>
@@ -26,7 +26,7 @@
   <div class="column-75" id="exercise-information">
     <div class="card" id="primary-information">
       <div class="text-center"><h3><%= @exercise.title %></h3></div>
-      <%= render 'shared/exercise_results', attempts: attempts %>
+      <%= render 'shared/exercise_results', exercise: @exercise, activities: activities, activity: activity %>
     </div>
     <div id="secondary-information">
       <div class="column-50 card" style="margin-right: 10px;">

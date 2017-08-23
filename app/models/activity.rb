@@ -1,4 +1,4 @@
-class Attempt < ApplicationRecord
+class Activity < ApplicationRecord
   belongs_to :exercise
   validates :time_taken, presence: true # greater than 0
   validates :date, presence: true

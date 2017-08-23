@@ -1,15 +1,15 @@
 <!-- Modal -->
-<div class="modal fade" id="newAttemptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="newActivityModal" tabindex="-1" role="dialog" aria-labelledby="newActivityModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New attempt</h5>
+        <h5 class="modal-title" id="newActivityModalLabel">New activity</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([exercise, attempt], remote: true, id: "new_attempt_form") do |f| %>
+        <%= simple_form_for([exercise, activity], remote: true, id: "new_activity_form") do |f| %>
           <%= f.error_notification %>
 
           <%= f.input :date %>
@@ -19,21 +19,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.button :submit, "Save new attempt", class: "btn btn-primary", id: "new_attempt_form_submit" %>
+        <%= f.button :submit, "Save new activity", class: "btn btn-primary", id: "new_activity_form_submit" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      $('#new_attempt_form_submit').click(function(event) {
-        event.preventDefault();
-        // Form validation
-      })
-    });
-  </script>
-<% end %>
 

@@ -1,21 +1,21 @@
-<div id="attempts-list">
-  <% if attempts.empty? %>
+<div id="activities-list">
+  <% if activities.empty? %>
     <p>You haven't recorded any times yet!</p>
 
   <% else %>
-    <% attempts.each do |attempt| %>
-      <ul class="list-inline attempt" data-attempt-id="<%= attempt.id %>">
-        <li>Date: <%= l(attempt.date, format: :short ) %></li>
-        <li>Time: <%= attempt.time_taken_in_minutes %></li>
-        <%= link_to "Delete", exercise_attempt_path(exercise_id: exercise.id, id: attempt.id), method: :delete, remote: true, class: "btn btn-danger" %>
+    <% activities.each do |activity| %>
+      <ul class="list-inline activity" data-activity-id="<%= activity.id %>">
+        <li><strong>Date:</strong> <%= l(activity.date, format: :short ) %></li>
+        <li><strong>Time:</strong> <%= activity.time_taken_in_minutes %></li>
+        <%= link_to "Delete", exercise_activity_path(exercise_id: exercise.id, id: activity.id), method: :delete, remote: true, class: "btn btn-danger" %>
       </ul>
     <% end %>
   <% end %>
 </div>
 
-<!-- Button trigger new attempts modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newAttemptModal">
-  New attempt
+<!-- Button trigger new activities modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newActivityModal">
+  New activity
 </button>
 
-<%= render '/attempts/attempts_form', exercise: exercise, attempt: attempt %>
+<%= render '/activities/activities_form', exercise: exercise, activity: activity %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
 
   resources :exercises, except: :index do
-    resources :attempts
+    resources :activities
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
