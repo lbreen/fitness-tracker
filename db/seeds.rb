@@ -6,7 +6,10 @@ User.destroy_all
 
 puts "**Destroyed previous data**"
 
-
+user = User.create({
+  email: "l.b@gmail.org",
+  password: "123456"
+  })
 
 exercise_titles = ["1.5 mile run", "3 mile run", "5 mile run", "8 mile tab"]
 activity_comments = ["Feeling sluggish ", "Really good - fresh legs", "Absolutely knackered about halfway but pushed through"]
