@@ -9,10 +9,11 @@
         </button>
       </div>
       <div class="modal-body">
+      <input type="text" class="datedropper" data-large-mode="true" data-large-default="true ">
         <%= simple_form_for([exercise, activity], remote: true, id: "new_activity_form") do |f| %>
           <%= f.error_notification %>
 
-          <%= f.input :date %>
+          <%= f.input :date, as: :text, id: "activity-date" %>
           <%= f.input :time_taken %>
           <%= f.input :comments %>
 
@@ -21,8 +22,15 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%= f.button :submit, "Save new activity", class: "btn btn-primary", id: "new_activity_form_submit" %>
         <% end %>
+
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $('input').dateDropper();
+  </script>
+<% end %>
 

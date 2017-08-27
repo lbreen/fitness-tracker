@@ -34,4 +34,5 @@ gem 'groupdate'
 gem 'faker'
 gem 'serviceworker-rails'
 gem "pundit"
+gem 'datedropper-rails'
 

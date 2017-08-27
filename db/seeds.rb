@@ -7,7 +7,7 @@ User.destroy_all
 puts "**Destroyed previous data**"
 
 user = User.create({
-  email: "l.b@gmail.org",
+  email: "l.b@gmail.com",
   password: "123456"
   })
 
