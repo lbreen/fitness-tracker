@@ -1,4 +1,4 @@
-class ActivityController < ApplicationController
+class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:destroy]
   before_action :find_exercise, only: [:new, :create]
 
